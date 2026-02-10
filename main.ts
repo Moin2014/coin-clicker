@@ -22,9 +22,6 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.Clickpower1, function (sprite, o
 controller.B.onEvent(ControllerButtonEvent.Repeated, function () {
     game.gameOver(true)
 })
-info.onCountdownEnd(function () {
-    game.reset()
-})
 controller.combos.attachCombo("ababb", function () {
     click_per_sec = 1000000
 })
@@ -186,8 +183,8 @@ let auto_click_groß = sprites.create(img`
     fbffffffffffffbf
     ffffffffffffffff
     `, SpriteKind.upgradeGROß)
-auto_click_groß.setFlag(SpriteFlag.Invisible, false)
-auto_click_mini.setFlag(SpriteFlag.GhostThroughSprites, false)
+auto_click_groß.setFlag(SpriteFlag.Invisible, true)
+auto_click_mini.setFlag(SpriteFlag.GhostThroughSprites, true)
 auto_click_groß.setPosition(115, 20)
 scaling.scaleByPixels(auto_click_groß, 10, ScaleDirection.Uniformly, ScaleAnchor.Middle)
 let click_power_1 = sprites.create(img`
@@ -215,7 +212,6 @@ let click_power_1 = sprites.create(img`
 click_power_1.setFlag(SpriteFlag.Invisible, true)
 click_power_1.setFlag(SpriteFlag.GhostThroughSprites, true)
 scaling.scaleByPixels(click_power_1, 15, ScaleDirection.Uniformly, ScaleAnchor.Middle)
-click_power_1.setPosition(10, 100)
 click_power = 1
 let click_power_50 = sprites.create(img`
     ....................
@@ -239,10 +235,11 @@ let click_power_50 = sprites.create(img`
     ........4444........
     ....................
     `, SpriteKind.Clickpower50)
-click_power_50.setPosition(30, 100)
+click_power_1.setPosition(30, 100)
 scaling.scaleByPixels(click_power_50, 15, ScaleDirection.Uniformly, ScaleAnchor.Middle)
 click_power_50.setFlag(SpriteFlag.Invisible, true)
 click_power_50.setFlag(SpriteFlag.GhostThroughSprites, true)
+click_power_50.setPosition(10, 100)
 game.onUpdateInterval(1000, function () {
     info.changeScoreBy(click_per_sec)
 })
